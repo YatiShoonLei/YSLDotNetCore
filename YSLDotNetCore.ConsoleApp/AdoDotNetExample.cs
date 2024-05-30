@@ -23,8 +23,7 @@ namespace YSLDotNetCore.ConsoleApp
             SqlConnection connection = new SqlConnection(_sqlConnectionStringBuilder.ConnectionString);
 
             connection.Open();
-            Console.WriteLine("Connection Open");
-
+           
             string query = "select * from Tbl_Blog";
             SqlCommand cmd = new SqlCommand(query, connection);
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
@@ -32,7 +31,6 @@ namespace YSLDotNetCore.ConsoleApp
             adapter.Fill(dt);
 
             connection.Close();
-            Console.WriteLine("Connection Close");
 
             foreach (DataRow dr in dt.Rows)
             {
@@ -44,7 +42,35 @@ namespace YSLDotNetCore.ConsoleApp
             }
         }
 
-        public void Create(string title,string author,string content)
+        public void Edit(int id)
+        {
+            SqlConnection connection = new SqlConnection(_sqlConnectionStringBuilder.ConnectionString);
+
+            connection.Open();
+
+            string query = "select * from Tbl_Blog where BlogID = @BlogID";
+            SqlCommand cmd = new SqlCommand(query, connection);
+            cmd.Parameters.AddWithValue("BlogID", id);
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            adapter.Fill(dt);
+
+            connection.Close();
+
+            if (dt.Rows.Count == 0)
+            {
+                Console.WriteLine("Data not found.");
+                return;
+            }
+            DataRow dr = dt.Rows[0];
+            Console.WriteLine("Blog ID => " + dr["BlogID"]);
+            Console.WriteLine("Blog Title => " + dr["BlogTitle"]);
+            Console.WriteLine("Blog Author => " + dr["BlogAuthor"]);
+            Console.WriteLine("Blog Content => " + dr["BlogContent"]);
+            Console.WriteLine("-------------------------------------------------");
+        }
+
+    public void Create(string title, string author, string content)
         {
             SqlConnection connection = new SqlConnection(_sqlConnectionStringBuilder.ConnectionString);
             connection.Open();
@@ -68,7 +94,48 @@ namespace YSLDotNetCore.ConsoleApp
 
             string message = result > 0 ? "Saving Successful" : "Saving Failed";
             Console.WriteLine(message);
+        }
 
+        public void Update(int id, string title, string author, string content)
+        {
+            SqlConnection connection = new SqlConnection(_sqlConnectionStringBuilder.ConnectionString);
+            connection.Open();
+
+            string query = @"UPDATE [dbo].[Tbl_Blog]
+   SET [BlogTitle] = @BlogTitle
+      ,[BlogAuthor] = @BlogAuthor
+      ,[BlogContent] = @BlogContent
+ WHERE [BlogID] = @BlogID";
+
+            SqlCommand cmd = new SqlCommand(query, connection);
+            cmd.Parameters.AddWithValue("@BlogID", id);
+            cmd.Parameters.AddWithValue("@BlogTitle", title);
+            cmd.Parameters.AddWithValue("@BlogAuthor", author);
+            cmd.Parameters.AddWithValue("@BlogContent", content);
+            int result = cmd.ExecuteNonQuery();
+
+            connection.Close();
+
+            string message = result > 0 ? "Updating Successful" : "Updating Failed";
+            Console.WriteLine(message);
+        }
+
+        public void Delete(int id)
+        {
+            SqlConnection connection = new SqlConnection(_sqlConnectionStringBuilder.ConnectionString);
+            connection.Open();
+
+            string query = @"DELETE FROM [dbo].[Tbl_Blog]
+      WHERE [BlogID] = @BlogID";
+
+            SqlCommand cmd = new SqlCommand(query, connection);
+            cmd.Parameters.AddWithValue("@BlogID", id);
+            int result = cmd.ExecuteNonQuery();
+
+            connection.Close();
+
+            string message = result > 0 ? "Deleting Successful" : "Deleting Failed";
+            Console.WriteLine(message);
         }
     }
 }
