@@ -9,8 +9,11 @@ using YSLDotNetCore.ConsoleApp;
 //adoDotNetExample.Delete(7);
 //adoDotNetExample.Edit(5);
 
-DapperExample dapperExample = new DapperExample();
-dapperExample.Run();
+//DapperExample dapperexample = new DapperExample();
+//dapperexample.Run();
+
+EFCoreExample eFCoreExample = new EFCoreExample();
+eFCoreExample.Run();
 
 Console.ReadLine();
 

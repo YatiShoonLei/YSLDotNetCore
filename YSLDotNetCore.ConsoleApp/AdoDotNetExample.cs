@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.Common;
+using Microsoft.Data.SqlClient;
 
 namespace YSLDotNetCore.ConsoleApp
 {
@@ -20,7 +20,9 @@ namespace YSLDotNetCore.ConsoleApp
         };
         public void Read()
         {
-            SqlConnection connection = new SqlConnection(_sqlConnectionStringBuilder.ConnectionString);
+            //SqlConnection connection = new SqlConnection(_sqlConnectionStringBuilder.ConnectionString);
+            using SqlConnection connection = new SqlConnection(ConnectionStrings.SqlConnectionStringBuilder.ConnectionString);
+
 
             connection.Open();
            

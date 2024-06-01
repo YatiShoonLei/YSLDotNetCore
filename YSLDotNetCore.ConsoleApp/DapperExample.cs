@@ -1,8 +1,8 @@
 ﻿using Dapper;
+using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -50,7 +50,7 @@ namespace YSLDotNetCore.ConsoleApp
             Console.WriteLine(item.BlogTitle);
             Console.WriteLine(item.BlogAuthor);
             Console.WriteLine(item.BlogContent);
-            Console.WriteLine("------------------------------------------");
+            Console.WriteLine("------------------------------------------------");
         }
 
         private void Create(string title, string author, string content)

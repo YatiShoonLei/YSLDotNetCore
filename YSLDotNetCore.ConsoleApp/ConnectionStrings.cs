@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Microsoft.Data.SqlClient;
+using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,7 +14,8 @@ namespace YSLDotNetCore.ConsoleApp
             DataSource = "DESKTOP-U6LKCT1",
             InitialCatalog = "YSLDotNetCore",
             UserID = "sa",
-            Password = "sasa@123"
+            Password = "sasa@123",
+            TrustServerCertificate = true
         };
     }
 }
