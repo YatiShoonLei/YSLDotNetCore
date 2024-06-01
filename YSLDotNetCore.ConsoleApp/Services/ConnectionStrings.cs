@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace YSLDotNetCore.ConsoleApp
+namespace YSLDotNetCore.ConsoleApp.Services
 {
     internal static class ConnectionStrings
     {

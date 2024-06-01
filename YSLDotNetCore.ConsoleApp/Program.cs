@@ -1,6 +1,6 @@
 ﻿using System.Data;
 using System.Data.SqlClient;
-using YSLDotNetCore.ConsoleApp;
+using YSLDotNetCore.ConsoleApp.EFCoreExamples;
 
 //AdoDotNetExample adoDotNetExample = new AdoDotNetExample();
 //adoDotNetExample.Read();

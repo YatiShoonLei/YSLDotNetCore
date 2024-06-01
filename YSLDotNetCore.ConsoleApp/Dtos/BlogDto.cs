@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace YSLDotNetCore.ConsoleApp;
+namespace YSLDotNetCore.ConsoleApp.Dtos;
 
 [Table("Tbl_Blog")]
 

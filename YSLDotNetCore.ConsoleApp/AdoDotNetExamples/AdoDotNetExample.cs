@@ -6,8 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.Common;
 using Microsoft.Data.SqlClient;
+using YSLDotNetCore.ConsoleApp.Services;
 
-namespace YSLDotNetCore.ConsoleApp
+namespace YSLDotNetCore.ConsoleApp.AdoDotNetExamples
 {
     internal class AdoDotNetExample
     {
@@ -25,7 +26,7 @@ namespace YSLDotNetCore.ConsoleApp
 
 
             connection.Open();
-           
+
             string query = "select * from Tbl_Blog";
             SqlCommand cmd = new SqlCommand(query, connection);
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
@@ -72,7 +73,7 @@ namespace YSLDotNetCore.ConsoleApp
             Console.WriteLine("-------------------------------------------------");
         }
 
-    public void Create(string title, string author, string content)
+        public void Create(string title, string author, string content)
         {
             SqlConnection connection = new SqlConnection(_sqlConnectionStringBuilder.ConnectionString);
             connection.Open();
@@ -86,7 +87,7 @@ namespace YSLDotNetCore.ConsoleApp
            ,@BlogAuthor
            ,@BlogContent)";
 
-            SqlCommand cmd = new SqlCommand(query,connection);
+            SqlCommand cmd = new SqlCommand(query, connection);
             cmd.Parameters.AddWithValue("@BlogTitle", title);
             cmd.Parameters.AddWithValue("@BlogAuthor", author);
             cmd.Parameters.AddWithValue("@BlogContent", content);

@@ -6,12 +6,14 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using YSLDotNetCore.ConsoleApp.Dtos;
+using YSLDotNetCore.ConsoleApp.Services;
 
-namespace YSLDotNetCore.ConsoleApp
+namespace YSLDotNetCore.ConsoleApp.DapperExamples
 {
     internal class DapperExample
     {
-        public void Run() 
+        public void Run()
         {
             //Read();
             //Edit(2);
@@ -25,7 +27,7 @@ namespace YSLDotNetCore.ConsoleApp
         {
             using IDbConnection db = new SqlConnection(ConnectionStrings.SqlConnectionStringBuilder.ConnectionString);
             List<BlogDto> list = db.Query<BlogDto>("select * from Tbl_Blog").ToList();
-            
+
             foreach (BlogDto item in list)
             {
                 Console.WriteLine(item.BlogID);
@@ -70,7 +72,7 @@ namespace YSLDotNetCore.ConsoleApp
            ,@BlogAuthor
            ,@BlogContent)";
             using IDbConnection db = new SqlConnection(ConnectionStrings.SqlConnectionStringBuilder.ConnectionString);
-            int result = db.Execute(query,item);
+            int result = db.Execute(query, item);
 
             string message = result > 0 ? "Saving Successful" : "Saving Failed";
             Console.WriteLine(message);
@@ -91,7 +93,7 @@ namespace YSLDotNetCore.ConsoleApp
       ,[BlogContent] = @BlogContent 
  WHERE [BlogID] = @BlogID";
             using IDbConnection db = new SqlConnection(ConnectionStrings.SqlConnectionStringBuilder.ConnectionString);
-            int result = db.Execute(query,item);
+            int result = db.Execute(query, item);
 
             string message = result > 0 ? "Updating Successful" : "Updating Failed";
             Console.WriteLine(message);
@@ -103,7 +105,7 @@ namespace YSLDotNetCore.ConsoleApp
             string query = @"DELETE FROM [dbo].[Tbl_Blog]
       WHERE [BlogID] = @BlogID";
             using IDbConnection db = new SqlConnection(ConnectionStrings.SqlConnectionStringBuilder.ConnectionString);
-            int result = db.Execute(query,item);
+            int result = db.Execute(query, item);
 
             string message = result > 0 ? "Deleting Successful" : "Deleting Failed";
             Console.WriteLine(message);

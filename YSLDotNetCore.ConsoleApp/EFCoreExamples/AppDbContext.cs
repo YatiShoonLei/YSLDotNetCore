@@ -4,8 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using YSLDotNetCore.ConsoleApp.Dtos;
+using YSLDotNetCore.ConsoleApp.Services;
 
-namespace YSLDotNetCore.ConsoleApp
+namespace YSLDotNetCore.ConsoleApp.EFCoreExamples
 {
     internal class AppDbContext : DbContext
     {

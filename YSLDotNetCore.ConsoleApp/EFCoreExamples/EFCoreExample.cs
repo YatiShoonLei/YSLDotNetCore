@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace YSLDotNetCore.ConsoleApp
+namespace YSLDotNetCore.ConsoleApp.EFCoreExamples
 {
     internal class EFCoreExample
     {
@@ -78,10 +78,10 @@ namespace YSLDotNetCore.ConsoleApp
         //    Console.WriteLine(message);
         //} 
 
-        private void Update(int id, string title, string author, string content) 
+        private void Update(int id, string title, string author, string content)
         {
             var item = db.Blogs.First(x => x.BlogID == id);
-            if(item is null)
+            if (item is null)
             {
                 Console.WriteLine("Data does not exist");
                 return;
@@ -98,7 +98,7 @@ namespace YSLDotNetCore.ConsoleApp
         private void Delete(int id)
         {
             var item = db.Blogs.FirstOrDefault(x => x.BlogID == id);
-            if (item is null) 
+            if (item is null)
             {
                 Console.WriteLine("Data doesn't found.");
                 return;
