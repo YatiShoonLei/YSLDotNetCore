@@ -1,5 +1,6 @@
 ﻿using System.Data;
 using System.Data.SqlClient;
+using YSLDotNetCore.ConsoleApp.DapperExamples;
 using YSLDotNetCore.ConsoleApp.EFCoreExamples;
 
 //AdoDotNetExample adoDotNetExample = new AdoDotNetExample();
@@ -9,11 +10,11 @@ using YSLDotNetCore.ConsoleApp.EFCoreExamples;
 //adoDotNetExample.Delete(7);
 //adoDotNetExample.Edit(5);
 
-//DapperExample dapperexample = new DapperExample();
-//dapperexample.Run();
+DapperExample dapperexample = new DapperExample();
+dapperexample.Run();
 
-EFCoreExample eFCoreExample = new EFCoreExample();
-eFCoreExample.Run();
+//EFCoreExample eFCoreExample = new EFCoreExample();
+//eFCoreExample.Run();
 
 Console.ReadLine();
 

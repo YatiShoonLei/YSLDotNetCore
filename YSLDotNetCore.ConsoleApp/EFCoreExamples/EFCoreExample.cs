@@ -51,7 +51,7 @@ namespace YSLDotNetCore.ConsoleApp.EFCoreExamples
 
         private void Create(string title, string author, string content)
         {
-            var item = new BlogDto
+            var item = new Dtos.BlogDto
             {
                 BlogTitle = title,
                 BlogAuthor = author,

@@ -20,7 +20,7 @@ namespace YSLDotNetCore.ConsoleApp.DapperExamples
             //Edit(7);
             //Create("Title9", "Author9", "Content9");
             //Update(11, "Title10", "Author10", "Content10");
-            Delete(11);
+            //Delete(11);
 
         }
         private void Read()
