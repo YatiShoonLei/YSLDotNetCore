@@ -4,8 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using YSLDotNetCore.ConsoleApp.Dtos;
 using YSLDotNetCore.ConsoleApp.Services;
+using YSLDotNetCore.RestApi.Models;
 
 namespace YSLDotNetCore.RestApi.Db
 {
@@ -15,6 +15,6 @@ namespace YSLDotNetCore.RestApi.Db
         {
             optionsBuilder.UseSqlServer(ConnectionStrings.SqlConnectionStringBuilder.ConnectionString);
         }
-        public DbSet<BlogDto> Blogs { get; set; }
+        public DbSet<BlogModel> Blogs { get; set; }
     }
 }
