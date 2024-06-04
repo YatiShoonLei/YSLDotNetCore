@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using YSLDotNetCore.ConsoleApp.Services;
 using YSLDotNetCore.RestApi.Models;
 
 namespace YSLDotNetCore.RestApi.Db
