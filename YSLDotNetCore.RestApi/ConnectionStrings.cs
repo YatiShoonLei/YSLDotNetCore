@@ -11,7 +11,7 @@ namespace YSLDotNetCore.RestApi
     {
         public static SqlConnectionStringBuilder SqlConnectionStringBuilder = new SqlConnectionStringBuilder()
         {
-            DataSource = "DESKTOP-U6LKCT1",
+            DataSource = "YATISHOONLEI",
             InitialCatalog = "YSLDotNetCore",
             UserID = "sa",
             Password = "sasa@123",

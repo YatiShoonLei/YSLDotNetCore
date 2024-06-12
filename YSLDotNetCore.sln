@@ -10,7 +10,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documents", "Documents", "{
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YSLDotNetCore.RestApi", "YSLDotNetCore.RestApi\YSLDotNetCore.RestApi.csproj", "{5A600D35-AF12-428C-928E-CD7B6F4858F9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YSLDotNetCore.RestApi", "YSLDotNetCore.RestApi\YSLDotNetCore.RestApi.csproj", "{5A600D35-AF12-428C-928E-CD7B6F4858F9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YSLDotNetCore.Shared", "YSLDotNetCore.Shared\YSLDotNetCore.Shared.csproj", "{01DBD481-BDA8-48AE-A4E2-33AD024F1606}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,6 +28,10 @@ Global
 		{5A600D35-AF12-428C-928E-CD7B6F4858F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5A600D35-AF12-428C-928E-CD7B6F4858F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5A600D35-AF12-428C-928E-CD7B6F4858F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01DBD481-BDA8-48AE-A4E2-33AD024F1606}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01DBD481-BDA8-48AE-A4E2-33AD024F1606}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01DBD481-BDA8-48AE-A4E2-33AD024F1606}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01DBD481-BDA8-48AE-A4E2-33AD024F1606}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
