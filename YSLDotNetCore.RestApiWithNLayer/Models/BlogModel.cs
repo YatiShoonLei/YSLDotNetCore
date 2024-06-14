@@ -1,10 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace YSLDotNetCore.RestApi.Models;
+namespace YSLDotNetCore.RestApiWithNLayer.Models;
 
 [Table("Tbl_Blog")]
-
 public class BlogModel
 {
     [Key]
