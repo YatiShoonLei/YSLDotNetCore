@@ -76,20 +76,31 @@ namespace YSLDotNetCore.RestApi.Controllers
 
         [HttpPatch("{id}")]
         public IActionResult PatchBlog(int id, BlogModel model)
+        
+        
+        
+        
+        
         {
+            List<AdoDotNetParameter> list = new List<AdoDotNetParameter>();
             string condition = string.Empty;
+
+            list.Add(new AdoDotNetParameter("@BlogID", id));
 
             if (!string.IsNullOrEmpty(model.BlogTitle))
             {
                 condition += " [BlogTitle] = @BlogTitle, ";
+                list.Add(new AdoDotNetParameter("@BlogTitle", model.BlogTitle));
             }
             if (!string.IsNullOrEmpty(model.BlogAuthor))
             {
                 condition += " [BlogAuthor] = @BlogAuthor, ";
+                list.Add(new AdoDotNetParameter("@BlogAuthor", model.BlogAuthor));
             }
             if (!string.IsNullOrEmpty(model.BlogContent))
             {
                 condition += " [BlogContent] = @BlogContent, ";
+                list.Add(new AdoDotNetParameter("@BlogContent", model.BlogContent));
             }
 
             if (condition.Length == 0)
@@ -100,26 +111,7 @@ namespace YSLDotNetCore.RestApi.Controllers
 
             string query = $@"UPDATE [dbo].[Tbl_Blog]
    SET {condition} WHERE [BlogID] = @BlogID";
-            var result = _adoDotNetService.Execute(query,
-                new AdoDotNetParameter("@BlogID", id),
-                new AdoDotNetParameter("@BlogTitle", model.BlogTitle),
-                new AdoDotNetParameter("@BlogAuthor", model.BlogAuthor),
-                new AdoDotNetParameter("@BlogContent", model.BlogContent)
-                );
-            _adoDotNetService.Execute(query, new AdoDotNetParameter("@BlogID", id));
-            if (model.BlogTitle != null)
-            {
-                _adoDotNetService.Execute(query, new AdoDotNetParameter("@BlogTitle", model.BlogTitle));
-            }
-            if (model.BlogAuthor != null)
-            {
-                _adoDotNetService.Execute(query, new AdoDotNetParameter("@BlogAuthor", model.BlogAuthor));
-            }
-            if (model.BlogContent != null)
-            {
-                _adoDotNetService.Execute(query, new AdoDotNetParameter("@BlogContent", model.BlogContent));
-            }
-
+            var result = _adoDotNetService.Execute(query, list.ToArray());
             string message = result > 0 ? "Updating Successful" : "Updating Failed";
             return Ok(message);
         }
@@ -129,14 +121,7 @@ namespace YSLDotNetCore.RestApi.Controllers
         {
             string query = @"DELETE FROM [dbo].[Tbl_Blog]
       WHERE [BlogID] = @BlogID";
-            SqlConnection connection = new SqlConnection(ConnectionStrings.SqlConnectionStringBuilder.ConnectionString);
-
-            connection.Open();
-            SqlCommand cmd = new SqlCommand(query, connection);
-            cmd.Parameters.AddWithValue("@BlogID", id);
-            int result = cmd.ExecuteNonQuery();
-            connection.Close();
-
+            var result = _adoDotNetService.Execute(query, new AdoDotNetParameter("@BlogID", id));
             string message = result > 0 ? "Deleting Successful" : "Deleting Failed";
             return Ok(message);
         }
