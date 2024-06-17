@@ -7,6 +7,16 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <Content Remove="data.json" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Include="data.json">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.19" />
 		<!--<PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.1" />-->
 		<!--<PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.20" />-->
@@ -14,10 +24,7 @@
 		<PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.20" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.20" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<Folder Include="Features\User\" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />		
 	</ItemGroup>
 
 </Project>
