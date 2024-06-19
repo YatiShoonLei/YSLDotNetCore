@@ -13,6 +13,13 @@ foreach (var question in model.questions)
 
 Console.ReadLine();
 
+static string ToNumber(string num)
+{
+    num = num.Replace("၁","1");
+    num = num.Replace("၂", "2");
+    return num;
+}
+
 public class MainDto
 {
     public Question[] questions { get; set; }
