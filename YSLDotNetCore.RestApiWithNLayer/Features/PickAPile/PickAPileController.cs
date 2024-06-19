@@ -23,10 +23,10 @@ namespace YSLDotNetCore.RestApiWithNLayer.Features.PickAPile
         }
 
         [HttpGet("Answers")]
-        public async Task<IActionResult> Answer()
+        public async Task<IActionResult> Answer(int id)
         {
             var model = await GetPickAPileAsync();
-            return Ok(model.Answers);
+            return Ok(model.Answers.Where(x => x.QuestionId == id).ToList());
         }
 
         [HttpGet("GetChoice")]
