@@ -15,6 +15,7 @@ namespace YSLDotNetCore.RestApi
             InitialCatalog = "YSLDotNetCore",
             UserID = "sa",
             Password = "sasa@123",
+            TrustServerCertificate = true
         };
     }
 }
