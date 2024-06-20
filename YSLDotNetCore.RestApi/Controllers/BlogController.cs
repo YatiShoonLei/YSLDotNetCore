@@ -17,14 +17,14 @@ namespace YSLDotNetCore.RestApi.Controllers
             _context = new AppDbContext();
         }
 
-        [HttpGet("Read")]
+        [HttpGet]
         public IActionResult Read()
          {
             var list = _context.Blogs.ToList();
             return Ok(list);
         }
 
-        [HttpGet("Edit")]
+        [HttpGet("{id}")]
         public IActionResult Edit(int id)
         {
             var item = _context.Blogs.FirstOrDefault(x => x.BlogID == id);
@@ -35,7 +35,7 @@ namespace YSLDotNetCore.RestApi.Controllers
             return Ok(item);
         }
 
-        [HttpPost("Create")]
+        [HttpPost]
         public IActionResult Create(BlogModel blog)
         {
             _context.Blogs.Add(blog);
@@ -44,7 +44,7 @@ namespace YSLDotNetCore.RestApi.Controllers
             return Ok(message);
         }
 
-        [HttpPut("Update")]
+        [HttpPut("{id}")]
         public IActionResult Update(int id, BlogModel blog)
         {
             var item = _context.Blogs.FirstOrDefault(x => x.BlogID == id);
@@ -60,7 +60,7 @@ namespace YSLDotNetCore.RestApi.Controllers
             return Ok(message);
         }
 
-        [HttpPatch("Patch")]
+        [HttpPatch("{id}")]
         public IActionResult Patch(int id, BlogModel blog)
         {
             var item = _context.Blogs.FirstOrDefault(x => x.BlogID == id);
@@ -85,7 +85,7 @@ namespace YSLDotNetCore.RestApi.Controllers
             return Ok(message);
         }
 
-        [HttpDelete("Delete")]
+        [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
             var item = _context.Blogs.FirstOrDefault(x => x.BlogID == id);
