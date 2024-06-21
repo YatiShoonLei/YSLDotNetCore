@@ -15,12 +15,12 @@ namespace YSLDotNetCore.ConsoleAppHttpClientExamples
         public async Task RunAsync()
         {
             //await ReadAsync();
-            await EditAsync(21);
+            //await EditAsync(21);
             //await EditAsync(100);
             //await DeleteAsync(4);
             //await DeleteAsync(7);
             //await CreateAsync("Title21", "Author21", "Content21");
-            await UpdateAsync(21,"Title211", "Author211", "Content211");
+            //await UpdateAsync(21,"Title21", "Author21", "Content21");
         }
 
         private async Task ReadAsync()
