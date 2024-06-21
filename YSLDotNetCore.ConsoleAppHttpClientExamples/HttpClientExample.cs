@@ -38,8 +38,6 @@ namespace YSLDotNetCore.ConsoleAppHttpClientExamples
                     Console.WriteLine($"Content => {item.BlogContent}");
                 }
             }
-            var message = await response.Content.ReadAsStringAsync();
-            Console.WriteLine(message);
         }
 
         private async Task EditAsync(int id)
