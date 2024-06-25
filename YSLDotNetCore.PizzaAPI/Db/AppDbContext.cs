@@ -56,8 +56,8 @@ public class OrderResponse
 
 public class SearchOrderResponse
 {
-    public PizzaOrderModel OrderModel { get; set; }
-    public List<PizzaOrderDetailModel> Details { get; set; }
+    public PizzaOrderInvoice OrderModel { get; set; }
+    public List<PizzaOrderInvoiceDetail> Details { get; set; }
 }
 
 [Table("Tbl_PizzaOrder")]
@@ -77,4 +77,23 @@ public class PizzaOrderDetailModel
     public int PizzaOrderDetailId { get; set; }
     public string PizzaOrderInvoiceNo { get; set; }
     public int PizzaExtraId { get; set; }
+}
+
+public class PizzaOrderInvoice
+{
+    public int PizzaOrderId { get; set; }
+    public string PizzaOrderInvoiceNo { get; set; }
+    public int PizzaId { get; set; }
+    public decimal TotalAmount { get; set; }
+    public string Pizza { get; set; }
+    public decimal Price { get; set; }
+}
+
+public class PizzaOrderInvoiceDetail
+{
+    public int PizzaOrderDetailId { get; set; }
+    public string PizzaOrderInvoiceNo { get; set; }
+    public int PizzaExtraId { get; set; }
+    public string PizzaExtraName { get; set; }
+    public decimal Price { get; set; }
 }
