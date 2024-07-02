@@ -40,6 +40,8 @@ namespace YSLDotNetCore.WinFormsApp
             //var colIndex = e.ColumnIndex;
             //var rowIndex =  e.RowIndex;
 
+            #region if
+
             if (e.RowIndex == -1) return;
             var blogID = Convert.ToInt32(dgvData.Rows[e.RowIndex].Cells["colID"].Value);
 
@@ -57,6 +59,31 @@ namespace YSLDotNetCore.WinFormsApp
                 DeleteBlog(blogID);
                 BlogList();
             }
+
+            #endregion
+
+            #region switch
+
+            int index = e.ColumnIndex;
+            EnumFormControlType enumFormControlType = (EnumFormControlType)index;
+            switch (enumFormControlType)
+            {
+                case EnumFormControlType.Edit:
+                    FrmBlog frmBlog = new FrmBlog(blogID);
+                    frmBlog.ShowDialog();
+                    BlogList();
+                    break;
+                case EnumFormControlType.Delete:
+                    var dialogResult = MessageBox.Show("Are you sure want to delete?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (dialogResult != DialogResult.Yes) return;
+                    DeleteBlog(blogID);
+                    BlogList();
+                    break;
+                default:
+                    break;
+            }
+
+            #endregion
         }
 
         private void DeleteBlog(int id)
