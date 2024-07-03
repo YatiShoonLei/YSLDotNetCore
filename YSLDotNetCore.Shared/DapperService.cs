@@ -13,6 +13,10 @@ namespace YSLDotNetCore.Shared
             _connectionString = connectionString;
         }
 
+        public DapperService()
+        {
+        }
+
         public List<M> Query<M>(string query,object? param = null)
         {
             using IDbConnection db = new SqlConnection(_connectionString);
