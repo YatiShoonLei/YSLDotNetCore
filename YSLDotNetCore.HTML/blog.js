@@ -76,7 +76,7 @@ function updateBlog(id, title, author, content) {
 }
 
 function deleteBlog(id) {
-    let result = confirm("Are you sure delete?");
+    let result = deleteMessage();
     if(!result)return;
     let list = getBlogs();
     let items = list.filter(x => x.id === id);
@@ -127,11 +127,37 @@ $('#btnSave').click(function () {
 })
 
 function successMessage(message) {
-    alert(message);
+    Swal.fire({
+        title: "Success!",
+        text: message,
+        icon: "success"
+    });
 }
 
 function errorMessage(message) {
-    alert(message);
+    Swal.fire({
+        title: "Error!",
+        text: message,
+        icon: "error"
+    });
+}
+
+function deleteMessage() {
+    swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then(function () {
+        swal.fire(
+          'Deleted!',
+          'Your file has been deleted.',
+          'success'
+        )
+      });
 }
 
 function clearControls() {
