@@ -76,24 +76,39 @@ function updateBlog(id, title, author, content) {
 }
 
 function deleteBlog(id) {
-    let result = deleteMessage();
-    if(!result)return;
-    let list = getBlogs();
-    let items = list.filter(x => x.id === id);
-    if (items.length == 0) {
-        console.log("No Data Found.");
-        return;
-    }
+    Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+        if (result.isConfirmed) {
+            let list = getBlogs();
+            let items = list.filter(x => x.id === id);
+            if (items.length == 0) {
+                console.log("No Data Found.");
+                return;
+            }
 
-    list = list.filter(x => x.id !== id);
-    const jsonBlog = JSON.stringify(list);
-    localStorage.setItem(tblBlog, jsonBlog);
+            list = list.filter(x => x.id !== id);
+            const jsonBlog = JSON.stringify(list);
+            localStorage.setItem(tblBlog, jsonBlog);
 
-    blogs = localStorage.getItem(tblBlog);
-    console.log(blogs);
-    
-    successMessage("Deleting Successful.");
-    getBlogTable();
+            blogs = localStorage.getItem(tblBlog);
+            console.log(blogs);
+
+            successMessage("Deleting Successful.");
+            getBlogTable();
+            Swal.fire({
+                title: "Deleted!",
+                text: "Your file has been deleted.",
+                icon: "success"
+            });
+        }
+    });
 }
 
 function uuidv4() {
@@ -116,10 +131,10 @@ $('#btnSave').click(function () {
     const author = $('#txtAuthor').val();
     const content = $('#txtContent').val();
 
-    if(blogID === null){
+    if (blogID === null) {
         createBlog(title, author, content);
     }
-    else{
+    else {
         updateBlog(blogID, title, author, content);
         blogID = null;
     }
@@ -143,21 +158,23 @@ function errorMessage(message) {
 }
 
 function deleteMessage() {
-    swal.fire({
-        title: 'Are you sure?',
+    Swal.fire({
+        title: "Are you sure?",
         text: "You won't be able to revert this!",
-        type: 'warning',
+        icon: "warning",
         showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete it!'
-      }).then(function () {
-        swal.fire(
-          'Deleted!',
-          'Your file has been deleted.',
-          'success'
-        )
-      });
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire({
+                title: "Deleted!",
+                text: "Your file has been deleted.",
+                icon: "success"
+            });
+        }
+    });
 }
 
 function clearControls() {
